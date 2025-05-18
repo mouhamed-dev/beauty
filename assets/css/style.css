@@ -1,0 +1,284 @@
+:where([class^="ri-"])::before { content: "\f3c2"; }
+:root {
+    --primary-color: #0baa6c;
+    --secondary-color: #333333;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+.text-4xl {
+    color: var(--primary-color) !important;
+}
+.p-cta {
+    color: #fff !important;
+    font-weight: bold !important;
+}
+.brand-name {
+    font-family: 'Pacifico', serif;
+}
+.hero-section {
+    background-image: url('');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Style de la vidéo en arrière-plan */
+.background-video-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+	background-color: #0baa6c;
+}
+.background-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    max-height: 100;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+.group:hover {
+    box-shadow: 2px 2px 6px rgba(11, 170, 108, 1);
+    background-color: var(--primary-color);
+}
+.group:hover img {
+    transform: scale(1.10);
+    transition: all ease-out 1s;
+}
+.custom-checkbox {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.custom-select {
+    position: relative;
+}
+.custom-select select {
+    display: none;
+}
+.select-selected {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+}
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #333 transparent transparent transparent;
+}
+.select-items div, .select-selected {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.select-hide {
+    display: none;
+}
+.select-items div:hover {
+    background-color: rgba(11, 170, 108, 0.1);
+}
+.custom-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+.service-card {
+    transition: all 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.testimonial-card {
+    transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: scale(1.02);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 8px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*<!--image caroussel en mouvement-->*/
+.slide1{
+	display: block;
+}
+/*<!--image caroussel en mouvement-->*/
+.carousel {
+   	width: 45%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 35px;
+}
+.carousel {
+    width: 45%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 45px;
+    padding-bottom: 35px;
+}
+
+/* Smartphones (portrait) - jusqu’à 480px */
+@media (max-width: 480px) {
+    .carousel {
+        width: 90%;
+    }
+}
+
+/* Petites tablettes et téléphones en paysage - entre 481px et 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    .carousel {
+        width: 80%;
+    }
+}
+
+/* Tablettes - entre 768px et 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .carousel {
+        width: 70%;
+    }
+}
+
+/* Écrans moyens - entre 1025px et 1439px */
+@media (min-width: 1025px) and (max-width: 1439px) {
+    .carousel {
+        width: 45%;
+    }
+}
+
+/* Très grands écrans - à partir de 1440px */
+@media (min-width: 1440px) {
+    .carousel {
+        width: 45%;
+    }
+}
+
+.slides {
+    display: flex;
+    transition: transform 1s ease;
+}
+.slide {
+    width: 100%;
+    object-fit: cover;
+}
+.carousel img {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

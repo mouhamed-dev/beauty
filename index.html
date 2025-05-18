@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty By Ndeya - Salon de Coiffure</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0baa6c',secondary:'#333333'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="icon" type="favicon.ico" href="assets/images/beauty-logo-vert.jpg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="brand-name text-primary text-2xl">Beauty By Ndeya</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#accueil" class="text-gray-800 hover:text-primary font-medium">Accueil</a>
+                <a href="#a-propos" class="text-gray-800 hover:text-primary font-medium">À propos</a>
+                <a href="#prestations" class="text-gray-800 hover:text-primary font-medium">Prestations</a>
+                <a href="#galerie" class="text-gray-800 hover:text-primary font-medium">Galerie</a>
+                <div class="dropdown">
+                    <a href="#" class="text-gray-800 hover:text-primary font-medium flex items-center">
+                        Pages
+                        <div class="w-4 h-4 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </a>
+                    <div class="dropdown-content mt-2">
+                        <a href="#avis" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary">Avis clients</a>
+                        <a href="#tarifs" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary">Tarifs</a>
+                        <a href="#devis" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary">Devis gratuit</a>
+                    </div>
+                </div>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium">Contact</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden w-10 h-10 flex items-center justify-center">
+                <button id="mobile-menu-button" class="text-gray-800">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Book Now Button -->
+            <a href="#reservation" class="hidden md:block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Réserver</a>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-3 shadow-md">
+            <div class="flex flex-col space-y-3">
+                <a href="#accueil" class="text-gray-800 hover:text-primary font-medium py-2">Accueil</a>
+                <a href="#a-propos" class="text-gray-800 hover:text-primary font-medium py-2">À propos</a>
+                <a href="#prestations" class="text-gray-800 hover:text-primary font-medium py-2">Prestations</a>
+                <a href="#galerie" class="text-gray-800 hover:text-primary font-medium py-2">Galerie</a>
+                
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-button flex justify-between items-center w-full text-left text-gray-800 hover:text-primary font-medium py-2">
+                        Pages
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 mt-1">
+                        <a href="#avis" class="block py-2 text-gray-800 hover:text-primary">Avis clients</a>
+                        <a href="#tarifs" class="block py-2 text-gray-800 hover:text-primary">Tarifs</a>
+                        <a href="#devis" class="block py-2 text-gray-800 hover:text-primary">Devis gratuit</a>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium py-2">Contact</a>
+                <a href="#reservation" class="bg-primary text-white px-4 py-2 !rounded-button text-center whitespace-nowrap hover:bg-opacity-90 transition mt-2">Réserver</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="accueil" class="hero-section min-h-[600px] flex items-center">
+
+            <!-- backgraound video -->
+             <div class="background-video-container">
+                <video autoplay muted loop class="background-video">
+                    <source src="assets/images/video-.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+            </div>
+
+            <div class="container mx-auto px-4 py-20">
+                <div class="max-w-xl">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Révélez Votre Beauté Naturelle</h1>
+                    <p class="text-lg p-cta text-white-700 mb-8">Découvrez l'excellence de la coiffure au cœur de Dakar. Nos experts stylistes subliment votre beauté avec passion et savoir-faire.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#reservation" class="bg-primary text-white px-8 py-3 !rounded-button text-center whitespace-nowrap hover:bg-opacity-90 transition">Prendre Rendez-vous</a>
+                        <a href="#prestations" class="border-2 border-primary text-primary px-8 py-3 !rounded-button text-center whitespace-nowrap hover:bg-primary hover:text-white transition">Nos Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="prestations" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services Phares</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre gamme complète de services de coiffure conçus pour sublimer votre beauté naturelle et révéler votre style unique.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520working%2520on%2520a%2520clients%2520hair%2520in%2520a%2520modern%2520salon%2C%2520creating%2520elegant%2520braids%2520with%2520extensions.%2520The%2520image%2520shows%2520a%2520clean%2C%2520well-lit%2520salon%2520environment%2520with%2520high-quality%2520styling%2520tools%2520and%2520products%2520visible%2520in%2520the%2520background&width=600&height=400&seq=2&orientation=landscape" alt="Tresses et Extensions" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Tresses et Extensions</h3>
+                            <p class="text-gray-600 mb-4">Nos experts réalisent des tresses parfaites et posent des extensions de qualité pour un résultat naturel et durable.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 15.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520applying%2520hair%2520relaxer%2520to%2520a%2520clients%2520hair%2520in%2520a%2520modern%2520salon.%2520The%2520stylist%2520is%2520wearing%2520gloves%2520and%2520using%2520professional%2520tools.%2520The%2520salon%2520has%2520elegant%2520decor%2520with%2520plants%2C%2520modern%2520styling%2520chairs%2C%2520and%2520a%2520clean%2C%2520bright%2520atmosphere&width=600&height=400&seq=3&orientation=landscape" alt="Défrisage et Lissage" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Défrisage et Lissage</h3>
+                            <p class="text-gray-600 mb-4">Transformez vos cheveux avec nos traitements de défrisage et lissage réalisés avec des produits de qualité professionnelle.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 25.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520creating%2520an%2520elegant%2520updo%2520hairstyle%2520for%2520a%2520client%2520in%2520a%2520modern%2520salon.%2520The%2520stylist%2520is%2520using%2520high-quality%2520styling%2520tools%2520and%2520products.%2520The%2520salon%2520has%2520a%2520luxurious%2520ambiance%2520with%2520stylish%2520decor%2C%2520soft%2520lighting%2C%2520and%2520a%2520sophisticated%2520atmosphere&width=600&height=400&seq=4&orientation=landscape" alt="Coiffures de Mariage" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Coiffures de Mariage</h3>
+                            <p class="text-gray-600 mb-4">Des coiffures élégantes et sophistiquées pour votre jour spécial, adaptées à votre style et à votre tenue.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 65.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520applying%2520hair%2520color%2520to%2520a%2520clients%2520hair%2520in%2520a%2520modern%2520salon.%2520The%2520stylist%2520is%2520wearing%2520gloves%2520and%2520using%2520professional%2520coloring%2520tools.%2520The%2520salon%2520has%2520a%2520trendy%2520atmosphere%2520with%2520stylish%2520decor%2C%2520color%2520charts%2520visible%2C%2520and%2520high-end%2520coloring%2520products%2520on%2520display&width=600&height=400&seq=5&orientation=landscape" alt="Coloration et Mèches" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Coloration et Mèches</h3>
+                            <p class="text-gray-600 mb-4">Apportez une touche de couleur à votre chevelure avec nos services de coloration professionnelle et mèches personnalisées.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 20.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520installing%2520a%2520high-quality%2520wig%2520on%2520a%2520client%2520in%2520a%2520modern%2520salon.%2520The%2520stylist%2520is%2520carefully%2520adjusting%2520the%2520wig%2520for%2520a%2520natural%2520look.%2520The%2520salon%2520has%2520an%2520elegant%2520atmosphere%2520with%2520various%2520wig%2520styles%2520displayed%2520in%2520the%2520background%2C%2520professional%2520styling%2520tools%2C%2520and%2520a%2520luxurious%2520ambiance&width=600&height=400&seq=6&orientation=landscape" alt="Pose de Perruques" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pose de Perruques</h3>
+                            <p class="text-gray-600 mb-4">Installation professionnelle de perruques naturelles ou synthétiques pour un résultat impeccable et confortable.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 18.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520african%2520hairstylist%2520performing%2520a%2520scalp%2520treatment%2520on%2520a%2520client%2520in%2520a%2520modern%2520salon.%2520The%2520stylist%2520is%2520applying%2520a%2520nourishing%2520treatment%2520to%2520the%2520clients%2520scalp.%2520The%2520salon%2520has%2520a%2520spa-like%2520atmosphere%2520with%2520relaxing%2520decor%2C%2520natural%2520hair%2520care%2520products%2520visible%2C%2520and%2520a%2520serene%2520ambiance&width=600&height=400&seq=7&orientation=landscape" alt="Soins du Cuir Chevelu" class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Soins du Cuir Chevelu</h3>
+                            <p class="text-gray-600 mb-4">Traitements nourrissants et revitalisants pour un cuir chevelu sain et des cheveux forts et brillants.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-semibold">À partir de 12.000 FCFA</span>
+                                <a href="#reservation" class="text-primary hover:text-opacity-80 flex items-center">
+                                    <span>Réserver</span>
+                                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#tarifs" class="inline-flex items-center text-primary hover:text-opacity-80">
+                        <span class="font-medium">Voir tous nos tarifs</span>
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="a-propos" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">À Propos de Beauty By Ndeya</h2>
+                        <p class="text-gray-600 mb-4">Fondé en 2018 par Ndeya Diop, notre salon s'est rapidement imposé comme une référence dans l'univers de la coiffure à Dakar. Avec plus de 15 ans d'expérience dans le domaine, Ndeya a su créer un espace où expertise et créativité se rencontrent pour sublimer la beauté naturelle de chaque cliente.</p>
+                        <p class="text-gray-600 mb-6">Notre équipe de stylistes talentueux est formée aux dernières techniques et tendances internationales, tout en maîtrisant parfaitement les spécificités des cheveux africains. Chez Beauty By Ndeya, nous croyons que chaque femme mérite une expérience de coiffure personnalisée qui met en valeur sa beauté unique.</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <div class="text-primary text-2xl font-bold mb-1">5+</div>
+                                <div class="text-gray-600 text-sm">Années d'expérience</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <div class="text-primary text-2xl font-bold mb-1">8</div>
+                                <div class="text-gray-600 text-sm">Stylistes experts</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <div class="text-primary text-2xl font-bold mb-1">3000+</div>
+                                <div class="text-gray-600 text-sm">Clientes satisfaites</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="bg-primary text-white px-8 py-3 !rounded-button inline-block whitespace-nowrap hover:bg-opacity-90 transition">Contactez-nous</a>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%2520african%2520female%2520salon%2520owner%2520standing%2520in%2520her%2520modern%2520hair%2520salon%2520with%2520a%2520confident%2520pose.%2520She%2520is%2520wearing%2520professional%2520attire%2520and%2520has%2520a%2520stylish%2520hairstyle.%2520The%2520salon%2520features%2520modern%2520styling%2520stations%2C%2520elegant%2520decor%2C%2520and%2520a%2520warm%2C%2520inviting%2520atmosphere.%2520The%2520image%2520conveys%2520professionalism%2C%2520expertise%2C%2520and%2520success&width=600&height=800&seq=8&orientation=portrait" alt="Fondatrice Beauty By Ndeya" class="w-full h-auto rounded-lg shadow-lg object-cover object-top">
+                            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-md">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                        <i class="ri-double-quotes-l ri-lg"></i>
+                                    </div>
+                                    <p class="text-gray-800 italic text-sm">"La beauté commence par l'amour de soi et le respect de ses cheveux naturels."</p>
+                                </div>
+                                <p class="text-primary font-medium text-right mt-2">- Ndeya Diop, Fondatrice</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pourquoi Nous Choisir</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Découvrez ce qui fait de Beauty By Ndeya le salon de coiffure préféré des Dakaroises exigeantes.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-award-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Expertise Reconnue</h3>
+                        <p class="text-gray-600">Notre équipe de stylistes est formée aux meilleures techniques internationales et possède une connaissance approfondie des cheveux africains.</p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-scissors-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Équipement Premium</h3>
+                        <p class="text-gray-600">Nous utilisons uniquement des outils et produits de qualité professionnelle pour garantir des résultats exceptionnels à chaque visite.</p>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-customer-service-2-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Service Personnalisé</h3>
+                        <p class="text-gray-600">Chaque cliente bénéficie d'une consultation approfondie pour créer un look parfaitement adapté à sa personnalité et son style de vie.</p>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-calendar-check-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Réservation Facile</h3>
+                        <p class="text-gray-600">Notre système de réservation en ligne vous permet de prendre rendez-vous à tout moment, selon vos disponibilités.</p>
+                    </div>
+                    
+                    <!-- Feature 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-home-smile-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Ambiance Chaleureuse</h3>
+                        <p class="text-gray-600">Notre salon offre un environnement accueillant et relaxant où vous pourrez vous détendre pendant que nous prenons soin de vos cheveux.</p>
+                    </div>
+                    
+                    <!-- Feature 6 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                <i class="ri-leaf-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Produits Naturels</h3>
+                        <p class="text-gray-600">Nous privilégions l'utilisation de produits respectueux des cheveux, incluant des options naturelles et adaptées aux cheveux africains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="galerie" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre Galerie</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Découvrez nos plus belles réalisations et laissez-vous inspirer pour votre prochaine visite.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Gallery Item 1 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse1.png">
+                    </div>
+                    
+                    <!-- Gallery Item 2 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse2.png">
+                    </div>
+                    
+                    <!-- Gallery Item 3 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse3.png">
+                    </div>
+                    
+                    <!-- Gallery Item 4 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse6.jpg">
+                    </div>
+                    
+                    <!-- Gallery Item 5 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse4.png">
+                    </div>
+                    
+                    <!-- Gallery Item 6 -->
+                    <div class="overflow-hidden rounded-lg shadow-sm group">
+                        <img src="assets/images/tresse.jpg">
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="#" class="inline-flex items-center text-primary hover:text-opacity-80">
+                        <span class="font-medium">Voir plus de réalisations sur Instagram</span>
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-instagram-line"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!--image caroussel en mouvement-->
+				<div class="carousel">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" style="text-align: center; margin-bottom: 25px;">Elle se fait coiffer</h3>
+    				<div class="slides">
+     			  	<img src="assets/images/el_1.jpg" class="slide" alt="">
+        			<img src="assets/images/el_2.png" class="slide" alt="">
+        			<img src="assets/images/el_3.jpg" class="slide" alt="">
+                    <img src="assets/images/el_4.jpg" class="slide" alt="">
+    				</div>
+				</div>
+
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="avis" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ce Que Disent Nos Clientes</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Découvrez les témoignages de nos clientes satisfaites qui nous font confiance pour sublimer leur beauté.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="text-primary">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Je fréquente Beauty By Ndeya depuis son ouverture et je ne changerais pour rien au monde. Les stylistes sont extrêmement compétents et à l'écoute. Mes tresses durent toujours plus longtemps quand elles sont faites ici!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520smiling%2520African%2520woman%2520in%2520her%252030s%2520with%2520a%2520neat%2C%2520elegant%2520hairstyle.%2520The%2520image%2520has%2520a%2520clean%2C%2520neutral%2520background%2520and%2520shows%2520her%2520face%2520clearly%2520with%2520good%2520lighting%2520that%2520highlights%2520her%2520features%2520in%2520a%2520flattering%2520way&width=100&height=100&seq=15&orientation=squarish" alt="Aïssatou Ndiaye" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Aïssatou Ndiaye</h4>
+                                <p class="text-gray-600 text-sm">Cliente depuis 5 ans</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="text-primary">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Pour mon mariage, j'ai fait confiance à l'équipe de Beauty By Ndeya et je n'ai pas été déçue. Ma coiffure était magnifique et a tenu toute la journée malgré la chaleur. Un grand merci à toute l'équipe pour leur professionnalisme!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520smiling%2520African%2520woman%2520in%2520her%252020s%2520with%2520an%2520elegant%2520updo%2520hairstyle.%2520The%2520image%2520has%2520a%2520clean%2C%2520neutral%2520background%2520and%2520shows%2520her%2520face%2520clearly%2520with%2520good%2520lighting%2520that%2520highlights%2520her%2520features%2520in%2520a%2520flattering%2520way&width=100&height=100&seq=16&orientation=squarish" alt="Fatou Diallo" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Fatou Diallo</h4>
+                                <p class="text-gray-600 text-sm">Mariée en 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="text-primary">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"J'ai enfin trouvé un salon qui comprend vraiment mes cheveux! Le défrisage que j'ai fait chez Beauty By Ndeya est le meilleur que j'ai jamais eu. Mes cheveux sont restés doux et en bonne santé. Je recommande vivement!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520smiling%2520African%2520woman%2520in%2520her%252040s%2520with%2520a%2520sleek%2C%2520straightened%2520hairstyle.%2520The%2520image%2520has%2520a%2520clean%2C%2520neutral%2520background%2520and%2520shows%2520her%2520face%2520clearly%2520with%2520good%2520lighting%2520that%2520highlights%2520her%2520features%2520in%2520a%2520flattering%2520way&width=100&height=100&seq=17&orientation=squarish" alt="Mariama Sow" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Mariama Sow</h4>
+                                <p class="text-gray-600 text-sm">Cliente depuis 3 ans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button inline-block whitespace-nowrap hover:bg-primary hover:text-white transition">Voir plus d'avis</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="tarifs" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Tarifs</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Des prix transparents et compétitifs pour des prestations de qualité professionnelle.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Pricing Category 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="bg-primary text-white p-6">
+                            <h3 class="text-xl font-bold mb-2">Tresses & Extensions</h3>
+                            <p class="opacity-90">Techniques traditionnelles et modernes</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Tresses simples</span>
+                                    <span class="font-semibold">15.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Tresses avec extensions</span>
+                                    <span class="font-semibold">25.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Vanilles</span>
+                                    <span class="font-semibold">20.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Nattes collées</span>
+                                    <span class="font-semibold">18.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Rasta</span>
+                                    <span class="font-semibold">30.000 FCFA</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 pt-6 border-t border-gray-100">
+                                <a href="#reservation" class="block text-center bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Réserver maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Category 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="bg-primary text-white p-6">
+                            <h3 class="text-xl font-bold mb-2">Coupe & Coiffage</h3>
+                            <p class="opacity-90">Pour un look frais et tendance</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Coupe simple</span>
+                                    <span class="font-semibold">8.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Coupe + Brushing</span>
+                                    <span class="font-semibold">12.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Coiffure événementielle</span>
+                                    <span class="font-semibold">35.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Coiffure mariée</span>
+                                    <span class="font-semibold">50.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Mise en plis</span>
+                                    <span class="font-semibold">15.000 FCFA</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 pt-6 border-t border-gray-100">
+                                <a href="#reservation" class="block text-center bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Réserver maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Category 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="bg-primary text-white p-6">
+                            <h3 class="text-xl font-bold mb-2">Traitements Spéciaux</h3>
+                            <p class="opacity-90">Pour des cheveux en pleine santé</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Défrisage</span>
+                                    <span class="font-semibold">25.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Coloration complète</span>
+                                    <span class="font-semibold">20.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Mèches/Balayage</span>
+                                    <span class="font-semibold">30.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Soin profond</span>
+                                    <span class="font-semibold">12.000 FCFA</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Pose de perruque</span>
+                                    <span class="font-semibold">18.000 FCFA</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 pt-6 border-t border-gray-100">
+                                <a href="#reservation" class="block text-center bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Réserver maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm mt-8 text-center">
+                    <p class="text-gray-600 mb-4">Vous ne trouvez pas ce que vous cherchez ? Contactez-nous pour un devis personnalisé.</p>
+                    <a href="#devis" class="text-primary hover:text-opacity-80 font-medium">Demander un devis gratuit</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="reservation" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Réservez Votre Rendez-vous</h2>
+                        <p class="text-gray-600 mb-8">Prenez rendez-vous en quelques clics et offrez à vos cheveux le soin qu'ils méritent. Notre équipe vous attend pour une expérience de coiffure exceptionnelle.</p>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Nos Horaires</h3>
+                            <ul class="space-y-3">
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Lundi - Vendredi</span>
+                                    <span class="font-medium">9h00 - 19h00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Samedi</span>
+                                    <span class="font-medium">8h00 - 20h00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-700">Dimanche</span>
+                                    <span class="font-medium">10h00 - 16h00</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Besoin d'aide ?</h3>
+                            <p class="text-gray-600 mb-4">Pour toute question ou assistance, n'hésitez pas à nous contacter :</p>
+                            <div class="flex items-center mb-3">
+                                <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <span class="text-gray-700">+221 77 123 45 67</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <span class="text-gray-700">contact@beautybyndeya.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <form id="booking-form" class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                            <div class="mb-6">
+                                <label for="service" class="block text-gray-700 font-medium mb-2">Service souhaité *</label>
+                                <div class="custom-select w-full">
+                                    <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                        <option value="" disabled selected>Sélectionnez un service</option>
+                                        <option value="tresses">Tresses et Extensions</option>
+                                        <option value="defrisage">Défrisage et Lissage</option>
+                                        <option value="coiffure-mariage">Coiffure de Mariage</option>
+                                        <option value="coloration">Coloration et Mèches</option>
+                                        <option value="perruque">Pose de Perruque</option>
+                                        <option value="soins">Soins du Cuir Chevelu</option>
+                                        <option value="autre">Autre (à préciser)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6" id="other-service-container" style="display: none;">
+                                <label for="other-service" class="block text-gray-700 font-medium mb-2">Précisez votre service *</label>
+                                <input type="text" id="other-service" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Décrivez le service souhaité">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="date" class="block text-gray-700 font-medium mb-2">Date souhaitée *</label>
+                                    <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required min="2025-05-17">
+                                </div>
+                                <div>
+                                    <label for="time" class="block text-gray-700 font-medium mb-2">Heure souhaitée *</label>
+                                    <input type="time" id="time" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required min="09:00" max="19:00">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="stylist" class="block text-gray-700 font-medium mb-2">Styliste préféré(e)</label>
+                                <div class="custom-select w-full">
+                                    <select id="stylist" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="" selected>Pas de préférence</option>
+                                        <option value="ndeya">Ndeya (Fondatrice)</option>
+                                        <option value="aminata">Aminata</option>
+                                        <option value="sophie">Sophie</option>
+                                        <option value="fatou">Fatou</option>
+                                        <option value="marie">Marie</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet *</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre nom et prénom">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Téléphone *</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Ex: 77 123 45 67">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Votre adresse email">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="notes" class="block text-gray-700 font-medium mb-2">Notes ou demandes spéciales</label>
+                                <textarea id="notes" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Informations complémentaires sur votre demande..."></textarea>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" required>
+                                    <span class="checkmark"></span>
+                                    <span class="text-gray-700 ml-2">J'accepte les conditions générales *</span>
+                                </label>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="text-gray-700 ml-2">Je souhaite recevoir un rappel SMS</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Confirmer le rendez-vous</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Quote Section -->
+        <section id="devis" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Demande de Devis Gratuit</h2>
+                        <p class="text-gray-600">Besoin d'un service personnalisé ou d'une prestation pour un événement spécial ? Demandez un devis gratuit et sans engagement.</p>
+                    </div>
+                    
+                    <form id="quote-form" class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="quote-name" class="block text-gray-700 font-medium mb-2">Nom complet *</label>
+                                <input type="text" id="quote-name" name="name" autocomplete="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre nom et prénom">
+                            </div>
+                            <div>
+                                <label for="quote-phone" class="block text-gray-700 font-medium mb-2">Téléphone *</label>
+                                <input type="tel" id="quote-phone" name="phone" autocomplete="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Ex: 77 123 45 67">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="quote-email" class="block text-gray-700 font-medium mb-2">Email *</label>
+                            <input type="email" id="quote-email" name="email" autocomplete="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre adresse email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="quote-service" class="block text-gray-700 font-medium mb-2">Type de service *</label>
+                            <div class="custom-select w-full">
+                                <select id="quote-service" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                    <option value="" disabled selected>Sélectionnez un type de service</option>
+                                    <option value="mariage">Coiffure pour mariage</option>
+                                    <option value="evenement">Coiffure pour événement</option>
+                                    <option value="groupe">Service pour groupe</option>
+                                    <option value="domicile">Service à domicile</option>
+                                    <option value="autre">Autre (à préciser)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="quote-description" class="block text-gray-700 font-medium mb-2">Description détaillée *</label>
+                            <textarea id="quote-description" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Décrivez en détail le service dont vous avez besoin, le nombre de personnes concernées, la date de l'événement, etc."></textarea>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="quote-date" class="block text-gray-700 font-medium mb-2">Date souhaitée *</label>
+                            <input type="date" id="quote-date" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required min="2025-05-17">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                <span class="text-gray-700 ml-2">J'accepte que mes données soient utilisées pour me contacter *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Demander un devis</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contactez-nous</h2>
+                        <p class="text-gray-600 mb-8">Nous sommes à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets capillaires.</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Adresse</h3>
+                                    <p class="text-gray-600">123 Avenue Cheikh Anta Diop<br>Dakar, Sénégal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Téléphone</h3>
+                                    <p class="text-gray-600">+221 77 123 45 67<br>+221 33 123 45 67</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Email</h3>
+                                    <p class="text-gray-600">contact@beautybyndeya.com<br>info@beautybyndeya.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-5 h-5 flex items-center justify-center text-primary">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Horaires d'ouverture</h3>
+                                    <p class="text-gray-600">Lundi - Vendredi: 9h00 - 19h00<br>Samedi: 8h00 - 20h00<br>Dimanche: 10h00 - 16h00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-3">Suivez-nous</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-facebook-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-instagram-line"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-twitter-x-line"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-whatsapp-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Envoyez-nous un message</h3>
+                            <form id="contact-form">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="contact-name" class="block text-gray-700 font-medium mb-2">Nom complet *</label>
+                                        <input type="text" id="contact-name" name="name" autocomplete="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre nom et prénom">
+                                    </div>
+                                    <div>
+                                        <label for="contact-email" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                        <input type="email" id="contact-email" name="email" autocomplete="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre adresse email">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="contact-subject" class="block text-gray-700 font-medium mb-2">Sujet *</label>
+                                    <input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Sujet de votre message">
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="contact-message" class="block text-gray-700 font-medium mb-2">Message *</label>
+                                    <textarea id="contact-message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required placeholder="Votre message..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Envoyer le message</button>
+                            </form>
+                        </div>
+                        
+                        <div class="h-80 rounded-lg">
+                            <div style="border: 2px solid #0baa6c; padding: 2px; width: 100%; height: 100%;"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5308.950228474908!2d-17.3744490107182!3d14.78544054674013!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec10b00007964db%3A0x81aebe74a5a3972d!2z8J2QgfCdkJ7wnZCa8J2QrvCdkK3wnZCyIPCdkIHwnZCyIPCdkI3wnZCd8J2QnvCdkLLwnZCa!5e1!3m2!1sfr!2ssn!4v1747538229978!5m2!1sfr!2ssn" style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-16 bg-primary">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Restez Informé(e)</h2>
+                    <p class="text-white text-opacity-90 mb-8">Inscrivez-vous à notre newsletter pour recevoir nos conseils capillaires, promotions exclusives et dernières actualités.</p>
+                    
+                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                        <input type="email" placeholder="Votre adresse email" name="email" autocomplete="email" class="flex-grow px-4 py-3 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-white" required>
+                        <button type="submit" class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">S'abonner</button>
+                    </form>
+                    
+                    <p class="text-white text-opacity-80 text-sm mt-4">En vous inscrivant, vous acceptez de recevoir nos emails. Vous pouvez vous désabonner à tout moment.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="brand-name text-white text-2xl mb-4 inline-block">Beauty By Ndeya</a>
+                    <p class="text-gray-400 mb-6">Votre salon de coiffure de référence à Dakar. Expertise, qualité et créativité au service de votre beauté.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-facebook-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-instagram-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-twitter-x-line"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-whatsapp-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#a-propos" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                        <li><a href="#prestations" class="text-gray-400 hover:text-white transition">Prestations</a></li>
+                        <li><a href="#galerie" class="text-gray-400 hover:text-white transition">Galerie</a></li>
+                        <li><a href="#tarifs" class="text-gray-400 hover:text-white transition">Tarifs</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tresses et Extensions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Défrisage et Lissage</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Coiffures de Mariage</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Coloration et Mèches</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pose de Perruques</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Soins du Cuir Chevelu</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-gray-400">123 Avenue Cheikh Anta Diop<br>Dakar, Sénégal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-gray-400">+221 77 123 45 67<br>+221 33 123 45 67</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-gray-400">contact@beautybyndeya.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; 2025 Beauty By Ndeya. Tous droits réservés.</p>
+                    <div class="flex flex-wrap justify-center mt-4 md:mt-0">
+                        <a href="#" class="mx-2 hover:text-white transition">Politique de confidentialité</a>
+                        <a href="#" class="mx-2 hover:text-white transition">Conditions d'utilisation</a>
+                        <a href="#" class="mx-2 hover:text-white transition">Mentions légales</a>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p>Moyens de paiement acceptés:</p>
+                    <div class="flex justify-center space-x-3 mt-2">
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-visa-fill ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-mastercard-fill ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-paypal-fill ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-bank-card-fill ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-money-dollar-circle-fill ri-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-arrow-up-line"></i>
+        </div>
+    </a>
+    <!-- Success Modal for Booking -->
+    <div id="booking-success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-8 h-8 flex items-center justify-center text-primary">
+                        <i class="ri-check-line ri-2x"></i>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Réservation Confirmée!</h3>
+                <p class="text-gray-600 mb-6">Votre rendez-vous a été enregistré avec succès. Vous recevrez bientôt une confirmation par email ou SMS.</p>
+                <button id="close-booking-modal" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>
