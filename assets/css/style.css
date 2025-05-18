@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.7;
     max-height: 100;
 }
+.grid .div-n:hover .h3-n {
+    color: var(--primary-color);
+    transition: all ease-in-out .3s;
+}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -242,24 +246,24 @@ input:checked + .slider:before {
     padding-bottom: 35px;
 }
 
-/* Smartphones (portrait) - jusqu’à 480px */
+/* Smartphones (portable) - jusqu’à 480px */
 @media (max-width: 480px) {
     .carousel {
-        width: 90%;
+        width: 100%;
     }
 }
 
 /* Petites tablettes et téléphones en paysage - entre 481px et 767px */
 @media (min-width: 481px) and (max-width: 767px) {
     .carousel {
-        width: 80%;
+        width: 90%;
     }
 }
 
 /* Tablettes - entre 768px et 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
     .carousel {
-        width: 70%;
+        width: 75%;
     }
 }
 
