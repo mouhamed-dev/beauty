@@ -3,6 +3,10 @@
     --primary-color: #0baa6c;
     --secondary-color: #333333;
 }
+::selection{
+    background-color: #19eb9a;
+    color: #000;
+}
 body {
     font-family: 'Poppins', sans-serif;
 }

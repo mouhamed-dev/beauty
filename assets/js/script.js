@@ -229,25 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    document.addEventListener("DOMContentLoaded", function () {
-    const lat = 14.6928;
-    const lng = -17.4467;
-
-    const map = L.map('map').setView([lat, lng], 13);
-
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution:
-        'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, etc.',
-    }).addTo(map);
-
-    L.marker([lat, lng])
-      .addTo(map)
-      .bindPopup('Nous sommes ici !')
-      .openPopup();
-  });
-
-
-
 // animation de carroussel en mouvement
 let currentIndex = 0;
     const slides = document.querySelector('.slides');
