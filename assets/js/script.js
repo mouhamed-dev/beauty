@@ -239,3 +239,43 @@ function showNextSlide() {
     slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 setInterval(showNextSlide, 3100); // Change d'image toutes les 3 secondes
+
+
+// Initialize CounterUp
+$(document).ready(function () {
+  $('[data-toggle="counter-up"]').counterUp({
+    delay: 10,
+    time: 2000,
+  });
+});
+
+  $(document).ready(function () {
+    let countersStarted = false; // Pour éviter plusieurs déclenchements
+
+    function startCounters() {
+      if (!countersStarted) {
+        $('[data-toggle="counter-up"]').each(function () {
+          $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+          }, {
+            duration: 1000,
+            easing: 'swing',
+            step: function (now) {
+              $(this).text(Math.ceil(now));
+            }
+          });
+        });
+        countersStarted = true;
+      }
+    }
+
+    // Déclenche l'animation quand les compteurs entrent dans la vue
+    const waypoint = new Waypoint({
+      element: document.getElementById('counter-section'), // met ici l’ID du conteneur de tes compteurs
+      handler: function () {
+        startCounters();
+        this.destroy(); // Pour ne pas relancer au scroll
+      },
+      offset: '80%' // Déclenche quand 80% du conteneur entre en vue
+    });
+  });
