@@ -240,3 +240,24 @@ function showNextSlide() {
 }
 setInterval(showNextSlide, 3100); 
 
+
+/* SPINNER CHARGEMENT */
+const loaderContainer = document.querySelector('.loader-container');
+function showLoader() {
+  if (loaderContainer) {
+    loaderContainer.style.display = 'flex';
+  }
+}
+
+function hideLoader() {
+  if (loaderContainer) {
+    loaderContainer.style.display = 'none';
+  }
+}
+
+showLoader();
+
+// cacher le chargement quand la fenêtre est rechargée
+window.addEventListener('load', () => {
+  hideLoader();
+});

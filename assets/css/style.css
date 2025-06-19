@@ -300,3 +300,51 @@ input:checked + .slider:before {
     padding: 0;
     box-sizing: border-box;
 }
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+.loader-logo {
+  width: 100px; /* Adjust size as needed */
+  border-radius: 50%;
+  margin-top: -65px; /* Space between logo and spinner */
+}
+
+.spinner {
+  margin-top: 50px;
+  border: 8px solid #f3f3f3; /* Light grey border */
+  border-top: 8px solid #0baa6c; /* Specified green color */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .loader-logo {
+    width: 80px; /* Smaller logo for small screens */
+  }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 6px;
+    margin-top: 50px;
+  }
+}
